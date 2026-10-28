@@ -1,0 +1,22 @@
+{
+  "tratamento": "Mr",
+  "nome": "Usuario PGATS",
+  "senha": "Senha@123",
+  "nascimento": {
+    "dia": "15",
+    "mes": "May",
+    "ano": "1995"
+  },
+  "endereco": {
+    "primeiroNome": "Usuario",
+    "sobrenome": "PGATS",
+    "empresa": "PGATS Testes",
+    "endereco": "Rua das Automacoes, 100",
+    "complemento": "Sala 2",
+    "pais": "Canada",
+    "estado": "Ontario",
+    "cidade": "Toronto",
+    "cep": "M5H 2N2",
+    "celular": "+1 416 555 0100"
+  }
+}
