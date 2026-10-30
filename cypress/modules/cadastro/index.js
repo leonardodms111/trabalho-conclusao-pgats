@@ -36,7 +36,7 @@ function iniciarCadastro(nome, email) {
   cy.get(seletores.botaoSignup).click();
 }
 
-function preencherInformacoesConta(usuario) {
+function preencherCadastro(usuario) {
   cy.get(seletores.tratamento[usuario.tratamento]).check();
   cy.get(seletores.senha).type(usuario.senha, { log: false });
   cy.get(seletores.diaNascimento).select(usuario.nascimento.dia);
@@ -44,19 +44,17 @@ function preencherInformacoesConta(usuario) {
   cy.get(seletores.anoNascimento).select(usuario.nascimento.ano);
   cy.get(seletores.newsletter).check();
   cy.get(seletores.ofertasParceiros).check();
-}
 
-function preencherEndereco(endereco) {
-  cy.get(seletores.primeiroNome).type(endereco.primeiroNome);
-  cy.get(seletores.sobrenome).type(endereco.sobrenome);
-  cy.get(seletores.empresa).type(endereco.empresa);
-  cy.get(seletores.endereco).type(endereco.endereco);
-  cy.get(seletores.complemento).type(endereco.complemento);
-  cy.get(seletores.pais).select(endereco.pais);
-  cy.get(seletores.estado).type(endereco.estado);
-  cy.get(seletores.cidade).type(endereco.cidade);
-  cy.get(seletores.cep).type(endereco.cep);
-  cy.get(seletores.celular).type(endereco.celular);
+  cy.get(seletores.primeiroNome).type(usuario.endereco.primeiroNome);
+  cy.get(seletores.sobrenome).type(usuario.endereco.sobrenome);
+  cy.get(seletores.empresa).type(usuario.endereco.empresa);
+  cy.get(seletores.endereco).type(usuario.endereco.endereco);
+  cy.get(seletores.complemento).type(usuario.endereco.complemento);
+  cy.get(seletores.pais).select(usuario.endereco.pais);
+  cy.get(seletores.estado).type(usuario.endereco.estado);
+  cy.get(seletores.cidade).type(usuario.endereco.cidade);
+  cy.get(seletores.cep).type(usuario.endereco.cep);
+  cy.get(seletores.celular).type(usuario.endereco.celular);
 }
 
 function criarConta() {
@@ -65,37 +63,35 @@ function criarConta() {
 
 function cadastrarUsuario(usuario) {
   iniciarCadastro(usuario.nome, usuario.email);
-  preencherInformacoesConta(usuario);
-  preencherEndereco(usuario.endereco);
+  preencherCadastro(usuario);
   criarConta();
 }
 
-function validarErroEmailExistente() {
-  cy.get(seletores.mensagemErroCadastro)
-    .should('be.visible')
-    .and('have.text', 'Email Address already exist!');
-}
-
-function validarFormularioNovoUsuarioVisivel() {
+function verificarSeFormularioNovoUsuarioEstaVisivel() {
   cy.get(seletores.tituloNovoUsuario)
     .should('be.visible')
     .and('have.text', 'New User Signup!');
 }
 
-function validarFormularioInformacoesContaVisivel() {
+function verificarSeFormularioInformacoesContaEstaVisivel() {
   cy.get(seletores.tituloInformacoesConta)
     .first()
     .should('be.visible')
     .and('contain.text', 'Enter Account Information');
 }
 
+function verificarSeMensagemEmailExistenteFoiExibida() {
+  cy.get(seletores.mensagemErroCadastro)
+    .should('be.visible')
+    .and('have.text', 'Email Address already exist!');
+}
+
 module.exports = {
   iniciarCadastro,
-  preencherInformacoesConta,
-  preencherEndereco,
+  preencherCadastro,
   criarConta,
   cadastrarUsuario,
-  validarErroEmailExistente,
-  validarFormularioNovoUsuarioVisivel,
-  validarFormularioInformacoesContaVisivel,
+  verificarSeFormularioNovoUsuarioEstaVisivel,
+  verificarSeFormularioInformacoesContaEstaVisivel,
+  verificarSeMensagemEmailExistenteFoiExibida,
 };

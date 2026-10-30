@@ -7,7 +7,7 @@ function acessarHome() {
   cy.visit('/');
 }
 
-function validarHomeVisivel() {
+function verificarSeHomeEstaVisivel() {
   cy.title().should('eq', 'Automation Exercise');
   cy.get(seletores.logo).should('be.visible');
   cy.get(seletores.carrossel).should('be.visible');
@@ -15,5 +15,5 @@ function validarHomeVisivel() {
 
 module.exports = {
   acessarHome,
-  validarHomeVisivel,
+  verificarSeHomeEstaVisivel,
 };

@@ -12,13 +12,18 @@ function fazerLogin(email, senha) {
   cy.get(seletores.botaoLogin).click();
 }
 
-function validarFormularioLoginVisivel() {
+function verificarSeFormularioLoginEstaVisivel() {
   cy.get(seletores.tituloLogin)
     .should('be.visible')
     .and('have.text', 'Login to your account');
 }
 
-function validarErroLoginInvalido() {
+function verificarSePaginaDeLoginFoiExibida() {
+  cy.url().should('include', '/login');
+  verificarSeFormularioLoginEstaVisivel();
+}
+
+function verificarSeMensagemLoginInvalidoFoiExibida() {
   cy.get(seletores.mensagemErroLogin)
     .should('be.visible')
     .and('have.text', 'Your email or password is incorrect!');
@@ -26,6 +31,7 @@ function validarErroLoginInvalido() {
 
 module.exports = {
   fazerLogin,
-  validarFormularioLoginVisivel,
-  validarErroLoginInvalido,
+  verificarSeFormularioLoginEstaVisivel,
+  verificarSePaginaDeLoginFoiExibida,
+  verificarSeMensagemLoginInvalidoFoiExibida,
 };

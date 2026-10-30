@@ -1,12 +1,23 @@
+// Component Object: o menu aparece em todas as páginas da aplicação
 const seletores = {
-  linkSignupLogin: 'a[href="/login"]',
-  linkLogout: 'a[href="/logout"]',
-  linkExcluirConta: 'a[href="/delete_account"]',
-  usuarioLogado: 'a:contains("Logged in as")',
+  linkSignupLogin: '.shop-menu a[href="/login"]',
+  linkProdutos: '.shop-menu a[href="/products"]',
+  linkCarrinho: '.shop-menu a[href="/view_cart"]',
+  linkLogout: '.shop-menu a[href="/logout"]',
+  linkExcluirConta: '.shop-menu a[href="/delete_account"]',
+  usuarioLogado: '.shop-menu a:contains("Logged in as")',
 };
 
 function irParaSignupLogin() {
   cy.get(seletores.linkSignupLogin).click();
+}
+
+function irParaProdutos() {
+  cy.get(seletores.linkProdutos).click();
+}
+
+function irParaCarrinho() {
+  cy.get(seletores.linkCarrinho).click();
 }
 
 function fazerLogout() {
@@ -17,7 +28,7 @@ function excluirConta() {
   cy.get(seletores.linkExcluirConta).click();
 }
 
-function validarUsuarioLogado(nome) {
+function verificarSeUsuarioEstaLogado(nome) {
   cy.get(seletores.usuarioLogado)
     .should('be.visible')
     .and('contain.text', `Logged in as ${nome}`);
@@ -25,7 +36,9 @@ function validarUsuarioLogado(nome) {
 
 module.exports = {
   irParaSignupLogin,
+  irParaProdutos,
+  irParaCarrinho,
   fazerLogout,
   excluirConta,
-  validarUsuarioLogado,
+  verificarSeUsuarioEstaLogado,
 };

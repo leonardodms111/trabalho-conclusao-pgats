@@ -8,6 +8,11 @@ module.exports = defineConfig({
     embeddedScreenshots: true,
     inlineAssets: true,
   },
+  retries: {
+    runMode: 1,
+    openMode: 0,
+  },
+  watchForFileChanges: false,
   e2e: {
     baseUrl: 'https://www.automationexercise.com',
     setupNodeEvents(on, config) {

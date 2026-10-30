@@ -1,0 +1,12 @@
+{
+  "produtos": [1, 2],
+  "busca": "Top",
+  "comentario": "Pedido de teste",
+  "cartao": {
+    "nome": "Usuario Teste",
+    "numero": "0000000000000000",
+    "cvc": "000",
+    "mesValidade": "01",
+    "anoValidade": "2030"
+  }
+}
