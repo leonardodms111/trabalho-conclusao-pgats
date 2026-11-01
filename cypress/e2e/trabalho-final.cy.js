@@ -135,7 +135,7 @@ describe('Trabalho Final - Automation Exercise', () => {
     rodape.verificarSeInscricaoFoiRealizada();
   });
 
-  it('Caso de Teste 15: Deve se cadastrar antes do checkout, finalizar o pedido e excluir a conta', () => {
+  it('Caso de Teste 15: Deve se cadastrar antes do checkout, finalizar o pedido, exibir a confirmação do pedido e excluir a conta', () => {
     const usuario = { ...usuarioBase, email: gerarEmail() };
 
     home.acessarHome();
@@ -161,7 +161,7 @@ describe('Trabalho Final - Automation Exercise', () => {
     fluxos.excluirContaLogada();
   });
 
-  it('Caso de Teste 16: Deve fazer login antes do checkout, finalizar o pedido e excluir a conta', () => {
+  it('Caso de Teste 16: Deve fazer login antes do checkout, finalizar o pedido, exibir a confirmação do pedido e excluir a conta', () => {
     const usuario = { ...usuarioBase, email: gerarEmail() };
     fluxos.criarUsuarioParaTeste(usuario);
 
